@@ -1,0 +1,41 @@
+<main role="main" class="inner cover container-fluid">
+    <br>
+    <h2 class="text-center">مصنع الأصلي للملابس</h2>
+    <br>
+    <div class="container col-4">
+        <div class="card-header defform text-white text-center shadow">
+            تسجيل الدخول
+        </div>
+        <form class="container card shadow" [formGroup]="LoginForm"  (ngSubmit)="Login()">
+            <br>
+            <!--Username-->
+            <div class="form-group">
+                <label for="email">اسم المستخدم </label>
+                <input type="text" [class.is-invalid]="Email?.invalid && Email?.touched" id="Email" name="Email" formControlName="Email" class="form-control">
+                <div *ngIf="Email?.errors&&Email?.touched">
+                    <small class="text-danger" *ngIf="Email?.errors?.['required']">Required email</small>
+                    <small class="text-danger"*ngIf="Email?.errors?.['pattern']">*must contain . and @</small>
+                </div>
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+                <label for="password">كلمة السر</label>
+                <input type="password" [class.is-invalid]="Password?.invalid && Password?.touched" formControlName="Password" id="password" name="txtPassword" class="form-control">
+                <div *ngIf="Password?.errors&& Password?.touched">
+                    <small class="text-danger" *ngIf="Password?.errors?.['required']">Password required</small>
+                    <small class="text-danger" *ngIf="Password?.errors?.['pattern']">Password inncoreect Format </small>
+                </div>
+            </div>
+
+            <!--Login-->
+            <br>
+            <div class="d-grid gap-2">
+             <button type="submit" class="btn defcolor btn-sm" [disabled]="LoginForm?.invalid">دخول</button>
+            </div>
+            <br>
+            <small class="text-danger container text-center" *ngIf="!loginSuccess">المستخدم غير موجود</small>
+        </form>
+    </div>
+    <br><br>
+</main>

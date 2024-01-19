@@ -1,0 +1,44 @@
+<br><br>
+<section class="page-section  text-center">
+    <div class="container">
+        <h2>المفضلة</h2>
+        
+    </div>
+    <div *ngIf="logged else fault">
+        <section class="page-section bg-muted text-white" style="padding-bottom: 3rem;">
+            <div class="container text-center">
+                <div class="row text-dark shadow-lg bg-white rounded" style="padding: 30px;">
+                    <h3 class="text-dark">المفضلة لديك</h3><br><br>
+                    <hr class="bg-danger"><br>
+                    <div *ngFor="let product of favoutites" class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="card container shadow"><br>
+                            <h5>{{product.name}}</h5>
+                            <div class="brand-box">
+                                
+                                <div *ngIf="product.discount > 0" class="badge bg-danger text-white"
+                                    style="position: absolute;">{{product.discount}} %</div>
+                                <i><img class="col-xl-10 col-lg-12 col-md-10 col-sm-12" src={{product.firstImage}} style="height: 180px;">
+                                </i><br>
+                                <i class="fa-duotone fa-heart"></i>
+                                <h6>السعر LE<span>{{product.price}}</span></h6>
+                                <!-- <i class="fa-solid fa-heart"></i> -->
+                            </div>
+                            <a (click)="GoToProduct(product.id)" class="btn btn-sm defcolor">عرض</a><br>
+                        </div><br>
+                    </div>
+                    <br><br>
+                </div>
+        
+            </div>
+        </section>
+    </div>
+    <ng-template #fault>
+        <br>
+        <h2> انت لم تسجل بعد</h2>
+        <h5>قم بتسجيل الدخول او انشاء حسب للتمكن من روية المفضلة لديك</h5>
+        <br>
+        <br>
+    </ng-template>
+
+
+</section>

@@ -1,0 +1,78 @@
+@import '../../Style/style.scss';
+.th-padding,.card-title{
+    padding-top: 50px;
+    font-size: 25px;
+    
+    }
+    .container{
+        margin-top: 50px;
+    }
+    .cart-conatainer{
+        margin-bottom: 100px;
+    }
+    .quntity-text{
+        height: 50px;
+        width: 50px;
+    }
+    #monatag-word
+    {
+     padding-right:70px;
+
+    }
+    
+    .tr-cart-total{
+        padding-top: 10px;
+        font-size: 35px;
+        font-weight: 400;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .btn-changing{
+        background-color:#d7bb3e;
+        color: white;
+        margin-left: 15px;
+      
+    
+    }
+    .card-header,.btn-changing{
+        font-size: 25px;
+    
+    }
+    .btn-changing:hover{
+        background-color: black;
+    }
+    .Cart-div{
+        border:none;
+        
+       
+    }
+    .img_cart{
+        height:500px;
+   
+       
+    }
+    .sala_font{
+        color:red;
+        padding-top: 100px;
+    }
+    .sala_font,#h1-egmaly-cart,#egmaly-word{
+        font-size:50px;
+    }
+    .card-cart-div{
+        background-color:rgb(248, 248, 248);
+    }
+    #h1-egmaly-cart,#egmaly-word
+    {
+    
+        color:green;
+        margin-top: 50px;
+     
+    }
+.update 
+{
+  
+  float:right;
+ 
+}
+.btn-changing{
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,82 @@
+<main role="main" class="inner cover container-fluid">
+    <br>
+    <div class="container col-4">
+        <div class="card-header defform text-center text-white shadow">
+إنشاء حساب
+        </div>
+        <form class="container card border-defcolor  border-2 shadow" [formGroup]="RegisterForm" (ngSubmit)="Register()">
+            <br>
+            <!--Name-->
+            <!-- <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" pattern="\b[A-Z][a-z]{4,}$" [class.is-invalid]="name.invalid && name.touched" [class.is-valid]="name.valid" [(ngModel)]="newUser.Name" id="name" name="txtName" #name="ngModel" required class="form-control">
+                <small class="text-danger" *ngIf="name.pristine && name.touched">*required</small>
+                <small class="text-danger" *ngIf="name.invalid && name.touched && name.dirty">*names must start with uppercase</small>
+            </div> -->
+
+            <!--Username-->
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text"  [class.is-invalid]="UserName?.invalid && UserName?.touched" formControlName="UserName" id="username" name="UserName" class="form-control">
+                <div *ngIf="UserName?.errors&& UserName?.touched">
+                    <small class="text-danger" *ngIf="UserName?.errors?.['required']">User Name Required</small>
+                    <small class="text-danger"
+                        *ngIf="UserName?.errors?.['pattern']">*must contain min 6 capital and small chars only
+                    </small>
+                </div>
+            </div>
+
+            <!--Email-->
+            <div class="form-group">
+                <label for="email">البريد الالكتروني</label>
+                <input type="email" [class.is-invalid]="Email?.invalid && Email?.touched" id="Email" name="Email" formControlName="Email" class="form-control">
+                <div *ngIf="Email?.errors && Email?.touched">
+                    <small class="text-danger" *ngIf="Email?.errors?.['required']">Required email</small>
+                    <small class="text-danger"*ngIf="Email?.errors?.['pattern']">*must contain . and @</small>
+                </div>
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+                <label for="password">كلمة السر</label>
+                <input type="password" [class.is-invalid]="Password?.invalid && Password?.touched" formControlName="Password" id="password" name="txtPassword" class="form-control">
+                <div *ngIf="Password?.errors && Password?.touched">
+                    <small class="text-danger" *ngIf="Password?.errors?.['required']">Password required</small>
+                    <small class="text-danger" *ngIf="Password?.errors?.['pattern']">Password must contain 6 chars at least </small>
+                    
+                </div>
+            </div>
+
+            <!--Confirm Password-->
+            <div class="form-group">
+                <label for="conPassword">تأكيد كلمة السر</label>
+                <input type="password" formControlName="ConfirmPassword" [class.is-invalid]="ConfirmPassword?.invalid && ConfirmPassword?.touched" id="conPassword" name="txtConfirmPassword" class="form-control">
+                <div *ngIf="RegisterForm?.errors && ConfirmPassword?.touched">
+                    <small class="text-danger" *ngIf="ConfirmPassword?.errors?.['required']">Required &</small>
+                    <small class="text-danger" *ngIf="RegisterForm?.errors?.['Miss_match']">Conirm Password Not match Password </small>
+                </div>
+
+
+            <!--Address-->
+            <div class="form-group">
+                <label for="about">كيف سمعت عنا</label>
+            </div>
+                <select id="about" [class.is-invalid]="About?.invalid && About?.touched"name="ddlAbout" formControlName="About" class="form-select">
+                    <option value="">أختر</option>
+                    <option value="1" *ngFor="let source of sources">{{source}}</option>
+                </select>
+                <small class="text-danger" *ngIf="About?.errors?.['required'] && About?.touched">*required</small>
+            </div>
+
+            <!--Register-->
+            <br>
+            <div class="d-grid gap-2">
+                <!-- <button (click)="doRegist(email.value,about.value,username.value,password.value,conPassword.value)"
+                    class="btn btn-sm defcolor text-white" type="submit"
+                    [disabled]="userForm.form.invalid">تسجيل</button> -->
+                <button type="submit" class="btn defcolor  btn-sm" [disabled]="RegisterForm?.invalid">تسجيل</button>
+            </div>
+            <br>
+        </form>
+    </div>
+    <br><br><br>

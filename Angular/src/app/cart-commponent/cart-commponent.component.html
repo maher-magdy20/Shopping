@@ -1,0 +1,128 @@
+
+<div *ngIf="logged;then empty ;else full"></div>
+    <ng-template #full>
+      <div class="container">
+      <table class="table table-borderless " style="direction: rtl;">
+
+
+
+      <thead>
+        <tr class="table-dark  " style="height: 50px;font-size: 30px;">
+          <th id="monatag-word">المنتج</th>
+          <th scope="col">السعر</th>
+          <th scope="col">الكمية</th>
+          <th scope="col">الأجمالي</th>
+          <th scope="col"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartlist?.productsVCart">
+          <td>
+              <div class="card mb-3" style="max-width: 540px; border: none;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img [src]="item.productVM.firstImage" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8 card-cart-div">
+                      <div class="card-body">
+                        <h5 class="card-title" style="padding-top:30px;">{{item.productVM.name}}</h5>
+                        <p class="card-text"><small class="text-muted" ></small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+         </td>
+           <td class="th-padding">
+        {{item.productVM.price}}
+
+           </td>
+          <td class="th-padding" >{{item.quntityOfProduct}}
+
+
+
+
+
+          </td>
+          <td class="th-padding">{{item.totalPrice}}</td>
+          <div class="update">
+          <td class="th-padding" >
+
+              <button type="button"  (click)="deleletprduct(item.productVM.id)" class="btn btn-changing update">حذف</button>
+              <input      [value]="item.quntityOfProduct "    #quantityinput  class="form-control text-center me-1  update" id="inputQuantity" type="number"
+              style="max-width: 4rem" />
+
+             <button  class="btn btn-changing  update" (click)="  updatecart(item.productVM.id,quantityinput.value) "> تعديل</button>
+
+          </td>
+        </div>
+        </tr>
+
+
+        <!-- end -->
+        <tr>
+          <td>
+            <button  class="btn btn-changing" (click)="Deletcard()">حذف الكل </button>
+          <!-- <button  class="btn btn-changing"click> تعديل</button></td> -->
+        </tr>
+      </tbody>
+  </table>
+  <div>
+    <h1 id="egmaly-word">الأجمالي</h1>
+     <h1 id="h1-egmaly-cart"> {{cartlist?.totalCartPrice}}</h1>
+  </div>
+  <div>
+    <button *ngIf="cartlist!=null" class=" btn btn-changing" (click)="Order()" >تنفيذ الطلب</button>
+
+    <div *ngIf="order">
+      <form class="container card shadow" [formGroup]="OrderForm"  (ngSubmit)="continueorder()">
+       
+          <div class="form-group"><br>
+            <label for="formControlRange">رقم الهاتف </label><br>
+            <input type="text" [class.is-invalid]="Phone?.invalid && Phone?.touched" formControlName="Phone" id="Phone" name="txtPassword" class="form-control">
+            <div *ngIf="Phone?.errors&& Phone?.touched">
+                <small class="text-danger" *ngIf="Phone?.errors?.['required']">Phone required</small>
+            </div>
+          </div>
+
+          <div class="form-group"><br>
+            <label for="formControlRange">العنوان</label><br>
+            <input type="text" [class.is-invalid]="Address?.invalid && Address?.touched" formControlName="Address" id="Address" name="txtPassword" class="form-control">
+            <div *ngIf="Address?.errors&& Address?.touched">
+                <small class="text-danger" *ngIf="Address?.errors?.['required']">Address required</small>
+            </div>
+          </div>
+          <br>
+          <div class="d-grid gap-2 col-md-4 " style="margin-right: 30%;">
+           <button type="submit" class="btn defcolor btn-sm" [disabled]="OrderForm?.invalid">أكتمال</button>
+          </div>
+          <br>
+      </form>
+    </div>
+
+
+  </div>
+  <div  style="display:flex">
+  <div>
+    <a routerLink="/OneCategory-Commponent" class=" btn btn-changing"  (click)="GotoProduct()">متابعة التسوق</a>
+</div>
+<div style="margin-left: 30px;">
+    <!-- <a href="#" class="btn btn-changing "  style="float:right">الدفع</a> -->
+</div>
+      </div>
+      </div>
+
+    </ng-template>
+  <ng-template #empty>
+      <div class="container">
+          <div class="card  text-white  Cart-div" >
+              <img src="/assets/images/cart4.jpg"  class="card-img img_cart" alt="...">
+                            <div class="card-img-overlay">
+              </div>
+
+            </div>
+            <a  routerLink="/product" class="btn btn-changing " (click)="gotoaddPoductinCart()">أضافة منتجات</a>
+     </div>
+
+    </ng-template>
+

@@ -1,0 +1,51 @@
+<br><br>
+<section class="page-section  text-center">
+    <div class="container" >
+        <h2>طلباتك</h2>
+    </div>
+    <div *ngIf="logged else fault">
+        <section class="page-section bg-muted text-white" style="padding-bottom: 3rem;">
+            <div class="container text-center">
+                
+                <div class="row text-dark shadow-lg bg-white rounded" style="padding: 30px;">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>الموقف</th>
+                            <th>العنوان</th>
+                            <th>المبلغ المطلوب سداده</th>   
+                            <th>رقم الهاتف</th> 
+                        </tr>
+                        <tr *ngFor="let order of Orders">
+                            <td *ngIf="order.status==0">تحت الطلب</td>
+                            <td *ngIf="order.status==1">تم الشحن</td>
+                            <td *ngIf="order.status==2">تم الاستلام بنجاح</td>
+                            <td *ngIf="order.status==3">تم الغاء الطلب</td>
+                            <td>{{order.address}}</td>
+                            <td>{{order.totalPrice}}</td>
+                            <td>{{order.phone}}</td>
+                            <td *ngIf="order.status==0">  
+                                <button class="btn text-danger btn-link" style="text-decoration: none;" (click)="DeleteOrder(order.id)"><i class="fas fa-window-close"></i> الغاء الطلب </button>
+                            </td>
+                            <td *ngIf="order.status==1" >
+                                <p>ف الطريق  <i class="fas fa-truck text-success"></i></p>
+                               
+                            </td>
+                            <td *ngIf="order.status==2" class="text-success">تم التوصيل<i class="far fa-check-circle"></i></td>
+                            <td *ngIf="order.status==3" class="text-danger">تم الالغاء</td>
+                        </tr>
+                        
+                        
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+    <ng-template #fault>
+        <div>
+            <br>
+            <h2> قم بالتسجيل اولا ثما اختار منتاجاتك </h2>
+            <br>
+            <br>
+        </div>
+    </ng-template>
+</section>

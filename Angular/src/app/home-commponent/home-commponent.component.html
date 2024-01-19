@@ -1,0 +1,157 @@
+<div class="container-fluid" style="height: 445px; background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+url(https://qph.fs.quoracdn.net/main-qimg-4c44db1c7ae3e9326f190687ad77f529); background-size: cover;">
+<br><br><br><br><br>
+<div class="container text-center text-white shadow-lg"><br>
+    <h1 class="font-weight-bolder">مرحبا بكم في مصنع الاصلي</h1>
+    <h2>للملابس الجاهزة</h2><br>
+</div>
+</div>
+<br>
+<!-- Category -->
+<!-- <section class="page-section bg-muted text-dark">
+    <div class="container text-center">
+
+        <h2>الفئات</h2>
+        <hr class="bg-primary">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="/category/1">رجالي</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="/category/1">حريمي</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="/category/1">اطفالي</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark">رضع</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="#">شيوخ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="#">عواجيز</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark">اموات</a>
+            </li>
+        </ul>
+    </div>
+</section> -->
+<br><br>
+<!-- Discount -->
+<section class="page-section align-items-center bg-muted text-white">
+    <div class="container text-center">
+
+        <div class="row text-dark shadow-lg bg-white rounded" style="padding: 30px;">
+            <h3 class="text-dark">خصومات الأصلي</h3><br><br>
+            <hr class="bg-danger"><br>
+            <div *ngFor="let product of discountProducts" class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card container shadow"><br>
+                    <h5>{{product.name}}</h5>
+                    <div class="brand-box">
+                        
+                        <div *ngIf="product.discount > 0" class="badge bg-danger text-white"
+                            style="position: absolute;">{{product.discount}} %</div>
+                        <i><img class="col-xl-10 col-lg-12 col-md-10 col-sm-12" src={{product.firstImage}} style="height: 180px;">
+                        </i><br>
+                        <i class="fa-duotone fa-heart"></i>
+                        <h6>السعر : LE<span> {{product.price}}</span></h6>
+                        <!-- <i class="fa-solid fa-heart"></i> -->
+                    </div>
+                    <a (click)="GoToProduct(product.id)" class="btn btn-sm defcolor">عرض</a><br>
+                </div><br>
+            </div>
+            <br><br>
+        </div>
+
+    </div>
+</section>
+<br><br>
+
+<!-- New Products -->
+<section class="page-section bg-muted text-white">
+    <div class="container text-center">
+
+        <div class="row text-dark shadow-lg bg-white rounded" style="padding: 30px;">
+            <h3 class="text-dark">موديلات جديدة</h3><br><br>
+            <hr class="bg-danger"><br>
+            <div *ngFor="let product of normalProducts" class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card container shadow"><br>
+                    <h5>{{product.name}}</h5>
+                    <div class="brand-box">
+                        
+                        <div *ngIf="product.discount > 0" class="badge bg-danger text-white"
+                            style="position: absolute;">{{product.discount}} %</div>
+                        <i><img class="col-xl-10 col-lg-12 col-md-10 col-sm-12" src={{product.firstImage}} style="height: 180px;">
+                        </i><br>
+                        <i class="fa-duotone fa-heart"></i>
+                        <h6>السعر LE<span>{{product.price}}</span></h6>
+                        <!-- <i class="fa-solid fa-heart"></i> -->
+                    </div>
+                    <a (click)="GoToProduct(product.id)" class="btn btn-sm defcolor">عرض</a><br>
+                </div><br>
+            </div>
+            <br><br>
+        </div>
+
+    </div>
+</section>
+<br><br>
+
+<!-- Why Choose US -->
+<section class="page-section bg-muted text-dark">
+    <div class="container text-center">
+        <div class="heading_container heading_center">
+            <h2>
+                ليه تختار مصنع الأصلي
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                <div class="container" style="padding: 20px;">
+                    <div class="card shadow-sm border bg-light" style="padding: 20px;">
+                        <div class="img-box">
+                            <img src="https://icon-library.com/images/img_488675.png" alt="" style="height: 50px;">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                سرعة الشحن
+                            </h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                <div class="container" style="padding: 20px;">
+                    <div class="card shadow-sm border bg-light" style="padding: 20px;">
+                        <div class="img-box">
+                            <img src="https://icon-library.com/images/img_488675.png" alt="" style="height: 50px;">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                الشحن لجميع المحافظات
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                <div class="container" style="padding: 20px;">
+                    <div class="card shadow-sm border bg-light" style="padding: 20px;">
+                        <div class="img-box">
+                            <img src="https://icon-library.com/images/img_488675.png" alt="" style="height: 50px;">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                افضل جودة
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>

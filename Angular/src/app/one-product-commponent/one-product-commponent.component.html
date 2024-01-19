@@ -1,0 +1,77 @@
+<!-- Product section-->
+<section class="py-3">
+    <div class="container px-2 px-lg-3 my-3">
+        <div class="row gx-4 gx-lg-5 align-items-center bg-white shadow-sm" *ngFor="let product of Products"
+            style="padding: 10px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="small mb-1">كود المنتج : {{product.id}}</div>
+                <h1 class="display-5 fw-bolder">{{product.name}}</h1>
+                <div class="fs-5 mb-2" *ngIf="product.discount > 0">
+                    <span>الخصم</span><span class="me-3">% {{product.discount}}</span>
+                </div>
+                <div class="fs-5 mb-4">
+                    <span>السعر : </span>
+                    <!-- <span class="text-decoration-line-through me-3">$45.00</span> -->
+                    <span class="me-3">LE {{product.price}}</span>
+                </div>
+                <div class="mb-4">
+                    <h5>وصف المنتج</h5>
+                    <small>{{product.description}} {{product.category}}</small><br>
+                    <small>الموسم : {{product.season}}</small>
+                </div>
+                <div class="d-flex"  *ngFor="let productincart of Products">
+                    <button (click)="addproducttocard(productincart.id,quantityinput.value)"  class="btn defcolor flex-shrink-0" type="button">
+                        أضف الي العربه
+                    </button>
+                    <input  #quantityinput  class="form-control text-center me-1" id="inputQuantity" type="number" value="1"
+                        style="max-width: 4rem" />
+                       <p>&nbsp;</p> 
+                       <button class="btn btn-fav flex-shrink-0 curs" type="button" (click)="AddToFavourite()" [class.add]="favourite">
+                        <i class="fa-solid fa-heart fav-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4 row" style="padding: 20px;">
+                <div class="col-12"><img #im class="card-img-top mb-5 mb-md-0" src={{product.images[0]}} alt="..." /><br><br></div>
+                
+                <div class="container col-3" *ngFor="let image of product.images">
+                    <img src={{image}} (click)="im.src=image" alt="" style="height: 60px; padding: 2px;" class="border rounded curs">
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Related items section-->
+<section class="page-section bg-muted text-white">
+    <div class="container text-center">
+
+        <div class="row text-dark" *ngIf="SimilarProducts.length > 0" style="padding: 30px;">
+            <h3 class="text-dark">منتجات مشابهه</h3><br><br>
+            <hr class="bg-danger"><br>
+            <div *ngFor="let product of SimilarProducts" class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card container shadow-sm"><br>
+                    <h5>{{product.name}}</h5>
+                    <div class="brand-box">
+
+                        <div *ngIf="product.discount > 0" class="badge bg-danger text-white"
+                            style="position: absolute;">{{product.discount}} %</div>
+                        <i><img class="col-xl-10 col-lg-12 col-md-10 col-sm-12" src={{product.firstImage}}
+                                style="height: 180px;">
+                        </i><br>
+                        <i class="fa-duotone fa-heart"></i>
+                        <h6>السعر LE<span>{{product.price}}</span></h6>
+
+                        <!-- <i class="fa-solid fa-heart"></i> -->
+
+                    </div>
+                    <a (click)="GoToProduct(product.id)" class="btn btn-sm defcolor">عرض</a><br>
+                </div><br>
+            </div>
+            <br><br>
+        </div>
+
+    </div>
+</section>

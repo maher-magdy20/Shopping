@@ -1,0 +1,129 @@
+<header class="header_section">
+  <div class="header_top">
+    <div class="container-fluid">
+      <div class="top_nav_container">
+        <div class="contact_nav">
+          <a routerLink="">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span> للتواصل : +01 123455678990 </span>
+          </a>
+          <a routerLink="">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span> البريد : AlaslyFactory@gmail.com </span>
+          </a>
+        </div>
+        <form class="search_form">
+          <input #SearchInput name="SearchInput" type="text" class="form-control" placeholder="...ابحث هنا" />
+          <button class="" type="submit" (click)="GoToSearch(SearchInput.value)">
+            <i class="fa fa-search" aria-hidden="true"> </i>
+          </button>
+        </form>
+
+        <div *ngIf="isLogin; then thenBlocked; else elseBlocked">
+
+        </div>
+        <ng-template #elseBlocked>
+          <div class="user_option_box">
+            <a routerLink="/login" class="account-link">
+              <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+  
+              <span> تسجيل الدخول </span>
+            </a>
+            <a routerLink="/register" class="cart-link">
+              <i class="fas fa-user-circle" aria-hidden="true"></i>
+  
+              <span> انشاء حساب </span>
+            </a>
+          </div>
+        </ng-template>
+
+        <ng-template #thenBlocked>
+          <div class="user_option_box cart-link">
+
+              <i class="fa fa-user cart-link" aria-hidden="true" style="margin-left: 0.5rem;"></i>
+              <span style="margin-left: 1rem;color: aliceblue;">{{userName}} </span>
+            
+            <button routerLink="/register" class="btn cart-link" (click)="Logout()">
+  
+              <span style="color: aliceblue;"> تسجيل الخروج </span>
+              <i class="fa fa-sign-out " style="color: rgb(227, 180, 62);" aria-hidden="true"></i>
+            </button>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+  <div class="header_bottom">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-toggleable-lg custom_nav-container">
+        <a class="navbar-brand" routerLink="">
+          <span> الأصلى </span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ">
+            <!-- <li >#i0 [class.active]="i0.id==isactive" id="0"  > -->
+            <li
+            (click)="goToHome()"
+              #Li0
+              id="0"
+              [ngClass]="{ active: Li0.id == isactive }"
+              class="nav-item"
+            >
+              <a class="nav-link" routerLink="/home">الرئيسية </a>
+            </li>
+            <!-- <span class="sr-only">(current)</span> -->
+
+            <li
+              *ngFor="let categ of AllCategories; index as i"
+              [ngClass]="{ active: categ.id==clicked }"
+              class="nav-item"
+              #Li{{categ.id}}
+              id="{{ categ.id }}"
+            >
+              <a
+                class="nav-link"
+                routerLink="#"
+                (click)="GetOneCategory(categ.id)"
+              >
+                {{ categ.name }}</a
+              >
+            </li>
+          </ul>
+
+          <div class="user_option_box">
+            
+            <a routerLink="/cart" class="cart-link">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span> المشتريات </span>
+            </a>
+
+            <a routerLink="/favourit" class="cart-link">
+              <span> المفضلة </span>
+              <i class="fas fa-heart"></i>
+            </a>
+
+            <a routerLink="/order" class="cart-link">
+              <span> طلباتك </span>
+              <i class="fas fa-shopping-bag"></i>
+            </a>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,63 @@
+
+
+<br /><br />
+<!-- Products -->
+<section class="page-section bg-muted text-white">
+  <div class="container text-center">
+    <div class="row text-dark shadow-lg bg-white" style="padding: 30px">
+      <h3 class="text-dark">{{ CategoryName }}</h3>
+      <br /><br />
+      <hr class="bg-primary" />
+      <br />
+
+      <div
+        *ngFor="let product of Products"
+        class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12"
+      >
+        <div class="card bg-light container">
+          <br />
+          <h5>{{ product.name }}</h5>
+          <div class="brand-box">
+            <div
+              *ngIf="product.discount > 0"
+              class="badge bg-danger text-white"
+              style="position: absolute"
+            >
+              {{ product.discount }} %
+            </div>
+            <i
+              ><img
+                class="col-xl-10 col-lg-12 col-md-10 col-sm-12"
+                src="{{ product.firstImage }}"
+                style="height: 180px"
+              /> </i
+            ><br />
+            <i class="fa-duotone fa-heart"></i>
+            <h6>
+              السعر: LE<span>{{ product.price }}</span>
+            </h6>
+          </div>
+          <a (click)="GoToProduct(product.id)" class="btn btn-sm defcolor"
+            >عرض</a
+          ><br />
+        </div>
+        <br />
+      </div>
+      <br /><br />
+    </div>
+  </div>
+</section>
+<br />
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <!-- <li class="page-item ">
+      <a class="page-link">السابق</a>
+    </li> -->
+    <li *ngFor="let n of ProductCount;let i=index" class="page-item">
+        <a class="page-link" (click)="nextCollectionOFProducts(i)" >{{i+1}}</a>
+    </li>
+    <!-- <li class="page-item">
+      <a class="page-link" routerLink="#">التالى</a>
+    </li> -->
+  </ul>
+</nav>
